@@ -51,7 +51,7 @@ jobs:
             
       - name: crear bucket
         run: |
-          aws s3api create-bucket    --bucket bucketaller20020503     --region us-east-1
+          aws s3api create-bucket    --bucket bucketaller1032498680     --region us-east-1
           aws s3api list-buckets
-          aws s3 cp funciones.py s3://bucketaller20020503
+          aws s3 cp arregloMenor.py s3://bucketaller1032498680
     
