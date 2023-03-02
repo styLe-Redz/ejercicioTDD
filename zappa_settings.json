@@ -1,0 +1,38 @@
+{
+    "dev": {
+        "app_function": "leer.f",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "aws_region": "us-east-1",
+        "project_name": "ejercicioTDD",
+        "runtime": "python3.8",
+        "s3_bucket": "dolar-raw-1032498680-v2",
+        "events": [{
+           "function": "leer.f", // The function to execute
+           "expression": "cron(00 15 * * ? *)" // When to execute it (in cron or rate format)
+       }],
+    },
+    "devv2": {
+        "app_function": "recibe.f",
+        "keep_warm": false,
+        "role_name": "LabRole",
+        "manage_roles": false,
+        "apigateway_enabled": false,
+        "aws_region": "us-east-1",
+        "project_name": "ejercicioTDD2",
+        "runtime": "python3.8",
+        "s3_bucket": "dolar-final-1032498680-v2",
+        "events": [{
+            "function": "recibe.f",
+            "event_source": {
+                  "arn":  "arn:aws:s3:::dolar-raw-1032498680-v2",
+                  "events": [
+                    "s3:ObjectCreated:*" 
+                  ]
+               }
+            }],
+        
+    }
+}
