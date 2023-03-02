@@ -20,10 +20,13 @@ jobs:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
+# Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
 
       - name: Run a one-line script
         run: echo Hello, world!
@@ -53,4 +56,11 @@ jobs:
         run: |
           aws s3api list-buckets
           aws s3 cp arregloMenor.py s3://bucketaller1032498680
+          
+      - name: ejecucion lambdas
+        run: |
+          source env/bin/activate
+          zappa update dev
+          zappa update devv2
+    
     
